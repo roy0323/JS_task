@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Supplies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0000ff">
+    
+    <!-- Link to Icons (example) -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div id="popupNotification" class="popup" style="display: none;"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Chemical Supplies</h1>
+
+            <div class="utilities">
+                <button onclick="addRow()" style="color: white; background-color: blue; border-radius: 100%;" title="Add a new row">
+                    <i class="fas fa-plus"></i>
+                </button>            
+                <button onclick="moveRowDown()" title="Move selected row down">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+                <button onclick="moveRowUp()" style="color: grey;" title="Move selected row up">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+                <button onclick="deleteSelectedRows()" style="color: rgb(201, 3, 3);" title="Delete selected rows">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <button onclick="refreshTable()" title="Refresh the table">
+                    <i class="fas fa-sync"></i>
+                </button>
+                <button onclick="saveDataToLocalStorage()" title="Save table data">
+                    <i class="fas fa-save"></i>
+                </button>
+            </div>
+        </div>
+
+        <table id="chemicals-table">
+            <thead>
+                <tr>
+                    <th></th> 
+                    <!-- <i class="fas fa-check"></i> -->
+                    <th onclick="sortTable(1)">ID</th>
+                    <th onclick="sortTable(2)">Chemical Name</th>
+                    <th onclick="sortTable(3)">Vendor</th>
+                    <th onclick="sortTable(4)" style="padding-top: 1.5%; padding-bottom: 1%;">Density<p style="padding-top: 20px; color: grey;">g/m<sup>3</sup></p></th>
+                    <th onclick="sortTable(5)" style="padding-top: 1.5%; padding-bottom: 1%;">Viscosity<p style="padding-top: 20px; color: grey;">m<sup>2</sup>/s</p></th>
+                    <th onclick="sortTable(6)">Packaging</th>
+                    <th onclick="sortTable(7)">Pack Size</th>
+                    <th onclick="sortTable(8)">Unit</th>
+                    <th onclick="sortTable(9)">Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add row modal -->
+<div id="rowModal" class="modal">
+    <div class="modal-content">
+        <h2>Add New Chemical</h2>
+        <label>Chemical Name: <input type="text" id="newChemicalName"></label><br>
+        <label>Vendor: <input type="text" id="newVendor"></label><br>
+        <label>Density: <input type="number" id="newDensity"></label><br>
+        <label>Viscosity: <input type="number" id="newViscosity"></label><br>
+        <label>Packaging: <br>
+            <select id="newPackaging">
+                <option value="Bag">Bag</option>
+                <option value="Barrel">Barrel</option>
+                <option value="Drum">Drum</option>
+            </select>
+        </label><br>
+        
+        <label>Pack Size: <input type="text" id="newPackSize"></label><br>
+        <label>Unit: <br>
+            <select id="newUnit">
+                <option value="kg">kg</option>
+                <option value="L">L</option>
+                <option value="g">g</option>
+            </select>
+        </label><br> 
+        
+        <label>Quantity: <input type="number" id="newQuantity"></label><br>
+        <button onclick="saveNewRow()">Save</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+</div>
+
+
+    <!-- Edit Row Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Chemical Details</h2>
+            <label>Chemical Name: <input type="text" id="editChemicalName"></label><br>
+            <label>Vendor: <input type="text" id="editVendor"></label><br>
+            <label>Density: <input type="number" id="editDensity"></label><br>
+            <label>Viscosity: <input type="number" id="editViscosity"></label><br>
+            <label>Packaging: <br>
+                <select id="editPackaging">
+                    <option value="Bag">Bag</option>
+                    <option value="Barrel">Barrel</option>
+                    <option value="Drum">Drum</option>
+                </select>
+            </label><br>
+
+            <label>Pack Size: <input type="text" id="editPackSize"></label><br>
+            <label>Unit: <br>
+                <select id="editUnit">
+                    <option value="kg">kg</option>
+                    <option value="L">L</option>
+                    <option value="g">g</option>
+                </select>
+            </label><br> 
+            
+            <label>Quantity: <input type="number" id="editQuantity"></label><br>
+            <button onclick="saveEditedRow()">Save</button>
+            <button onclick="closeEditModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
