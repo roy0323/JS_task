@@ -61,8 +61,8 @@
     Scalability: The table is designed to handle multiple rows efficiently. Data is dynamically rendered, and the modular nature of the code allows for future feature enhancements like search functionality or filtering.
 
 4. Areas for Future Enhancement:
-    Database Integration: In a production environment, consider replacing local storage with a backend database to allow for larger datasets and multi-user access.
-    Data Analytics: Add analytical tools for reporting on chemical usage, suppliers, and inventory trends.
+    Database Integration: In a production environment, we can consider replacing local storage with a backend database to allow for larger datasets and multi-user access.
+    Data Analytics: Adding analytical tools for reporting on chemical usage, suppliers, and inventory trends.
     Pagination: For better performance when managing larger datasets.
     Validation: Adding input validation to ensure data consistency (e.g., ensuring numeric fields like "Density" contain only valid numbers).
     Advanced Search/Filter: Implementing a search function for quick navigation across large datasets.
